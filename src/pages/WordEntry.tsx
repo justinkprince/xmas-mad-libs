@@ -89,7 +89,7 @@ export default function WordEntry() {
                   key={word.id}
                   className="bg-card border border-border rounded-lg p-4 flex flex-col sm:flex-row sm:items-center gap-3"
                 >
-                  <div className="flex items-center gap-2 min-w-[180px]">
+                  <div className="flex items-center gap-2 min-w-45">
                     <label htmlFor={word.id} className="font-semibold text-secondary">
                       {word.label}:
                     </label>
