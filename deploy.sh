@@ -21,9 +21,9 @@ git commit -m "Deploy to GitHub Pages"
 
 # Push to gh-pages branch
 echo "Deploying to GitHub Pages..."
-git push -f git@github.com:yourusername/xmas-mad-libs.git gh-pages
+git push -f git@github.com:justinkprince/xmas-mad-libs.git gh-pages
 
 cd ..
 
 echo "Deployed successfully!"
-echo "Your site will be available at: https://yourusername.github.io/xmas-mad-libs/"
+echo "Your site will be available at: https://justinkprince.github.io/xmas-mad-libs/"
