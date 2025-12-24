@@ -64,7 +64,7 @@ export default function Home() {
                       <div className="flex items-start justify-between mb-3">
                         <h3 className="text-xl font-bold text-foreground pr-2">{template.name}</h3>
                         {isCompleted && (
-                          <span className="flex-shrink-0 bg-secondary text-secondary-foreground text-xs px-2 py-1 rounded-full">
+                          <span className="shrink-0 bg-secondary text-secondary-foreground text-xs px-2 py-1 rounded-full">
                             ✓ Done
                           </span>
                         )}
@@ -103,6 +103,19 @@ export default function Home() {
                 </div>
               )
             })}
+          </div>
+
+          {/* QR Code Section */}
+          <div className="mt-12 text-center">
+            <div className="inline-block bg-card border-2 border-accent rounded-xl shadow-lg p-6">
+              <h3 className="text-xl font-bold text-foreground mb-3">Share with Friends!</h3>
+              <p className="text-muted-foreground text-sm mb-4">Scan to play on your phone</p>
+              <img
+                src="/xmas-mad-libs/jules-mabel-games-qr.svg"
+                alt="QR Code to Christmas Mad Libs"
+                className="w-48 h-48 mx-auto"
+              />
+            </div>
           </div>
         </div>
       </div>
