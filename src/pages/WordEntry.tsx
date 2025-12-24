@@ -1,10 +1,12 @@
 import type React from "react"
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import Snowfall from "react-snowfall";
 import madlibsData from "../data/madlibs.json"
 import type { MadLibTemplate } from "../lib/types"
 import { saveMadLib, getMadLib, deleteMadLib } from "../lib/storage"
 import Header from "../components/Header"
+import Share from "../components/Share"
 
 export default function WordEntry() {
   const { id } = useParams<{ id: string }>()
@@ -70,6 +72,7 @@ export default function WordEntry() {
 
   return (
     <>
+      <Snowfall />
       <Header />
 
       <div className="flex-1 flex flex-col">
@@ -90,7 +93,7 @@ export default function WordEntry() {
                   className="bg-card border border-border rounded-lg p-4 flex flex-col sm:flex-row sm:items-center gap-3"
                 >
                   <div className="flex items-center gap-2 min-w-45">
-                    <label htmlFor={word.id} className="font-semibold text-secondary">
+                    <label htmlFor={word.id} className="font-semibold text-secondary-foreground">
                       {word.label}:
                     </label>
                     <button
@@ -103,7 +106,7 @@ export default function WordEntry() {
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="none"
-                        stroke="currentColor"
+                        stroke="#ffffff"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -121,7 +124,7 @@ export default function WordEntry() {
                       type="text"
                       value={formData[word.id] || ""}
                       onChange={(e) => handleInputChange(word.id, e.target.value)}
-                      className="w-full px-4 py-2 border-2 border-border rounded-lg focus:border-primary focus:outline-none transition-colors"
+                      className="w-full px-4 py-2 border-2 border-border rounded-lg focus:border-primary focus:outline-none transition-colors text-secondary-foreground"
                       placeholder={`Enter a ${word.label.toLowerCase()}`}
                       required
                     />
@@ -134,6 +137,8 @@ export default function WordEntry() {
                 </div>
               ))}
             </form>
+
+            <Share />
           </div>
         </div>
 

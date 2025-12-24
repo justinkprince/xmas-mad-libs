@@ -1,9 +1,11 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import Snowfall from "react-snowfall";
 import madlibsData from "../data/madlibs.json"
 import type { MadLibTemplate } from "../lib/types"
 import { hasMadLib } from "../lib/storage"
 import Header from "../components/Header"
+import Share from "../components/Share"
 
 export default function Home() {
   const [selectedId, setSelectedId] = useState<string | null>(null)
@@ -28,13 +30,18 @@ export default function Home() {
 
   return (
     <>
+      <Snowfall style={{
+        position: "fixed",
+        width: "100vw",
+        height: "100vh"
+      }} />
       <Header />
 
       {/* Main Content */}
       <div className="flex-1 p-4 md:p-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2">Choose Your Story</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2 mt-4">Choose Your Story</h2>
             <p className="text-lg text-muted-foreground">Select a Mad Lib to create your own silly Christmas tale!</p>
           </div>
 
@@ -47,7 +54,7 @@ export default function Home() {
                 <div key={template.id} className={`relative ${isSelected ? "z-50" : "z-0"}`}>
                   {isSelected && (
                     <div
-                      className="fixed inset-0 bg-foreground/50 backdrop-blur-sm transition-opacity"
+                      className="fixed inset-0 backdrop-blur-sm transition-opacity"
                       onClick={handleBackdropClick}
                     />
                   )}
@@ -55,8 +62,8 @@ export default function Home() {
                   <div
                     className={`bg-card border-2 rounded-xl shadow-lg cursor-pointer transition-all duration-300 ${
                       isSelected
-                        ? "fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-md scale-110 border-accent"
-                        : "border-border hover:border-accent hover:shadow-xl"
+                        ? "fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[86vw] max-w-md scale-110 border-accent"
+                        : "border-border hover:border-accent hover:shadow-xl cursor-pointer"
                     }`}
                     onClick={() => !isSelected && handleCardClick(template.id)}
                   >
@@ -105,18 +112,7 @@ export default function Home() {
             })}
           </div>
 
-          {/* QR Code Section */}
-          <div className="mt-12 text-center">
-            <div className="inline-block bg-card border-2 border-accent rounded-xl shadow-lg p-6">
-              <h3 className="text-xl font-bold text-foreground mb-3">Share with Friends!</h3>
-              <p className="text-muted-foreground text-sm mb-4">Scan to play on your phone</p>
-              <img
-                src="/xmas-mad-libs/jules-mabel-games-qr.svg"
-                alt="QR Code to Christmas Mad Libs"
-                className="w-48 h-48 mx-auto"
-              />
-            </div>
-          </div>
+          <Share />
         </div>
       </div>
     </>

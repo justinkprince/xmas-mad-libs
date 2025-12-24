@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import Snowfall from "react-snowfall";
 import Header from "../components/Header"
 
 export default function NotFound() {
@@ -6,6 +7,7 @@ export default function NotFound() {
 
   return (
     <>
+      <Snowfall />
       <Header />
       <div className="flex-1 flex items-center justify-center p-4">
         <div className="text-center max-w-md">

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import Snowfall from "react-snowfall";
 import madlibsData from "../data/madlibs.json"
 import type { MadLibTemplate } from "../lib/types"
 import { getMadLib } from "../lib/storage"
 import Header from "../components/Header"
+import Share from "../components/Share"
 
 export default function Results() {
   const { id } = useParams<{ id: string }>()
@@ -44,6 +46,7 @@ export default function Results() {
 
   return (
     <>
+      <Snowfall />
       <Header />
 
       <div className="flex-1 p-4 md:p-8">
@@ -95,6 +98,8 @@ export default function Results() {
               Choose Another
             </button>
           </div>
+
+          <Share />
 
           {hoveredWord && (
             <div className="fixed bottom-4 left-1/2 -translate-x-1/2 bg-secondary text-secondary-foreground px-4 py-2 rounded-lg shadow-lg text-sm font-semibold z-50">
